@@ -18,8 +18,10 @@ class LottoRepository {
         }
     }
 
-    findAll() {
-        return [...this.#lottos];
+    findAllRankingByNumbersAndBonusNumber(numbers, bonusNumber) {
+        return this.#lottos.map((v) => {
+            v.calculateRanking(numbers, bonusNumber);
+        });
     }
 
     count() {
