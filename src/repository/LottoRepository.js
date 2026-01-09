@@ -18,6 +18,13 @@ class LottoRepository {
         }
     }
 
+    countByRanking(numbers, bonusNumber) {
+        return this.findAllRankingByNumbersAndBonusNumber(numbers, bonusNumber).reduce((a, c) => {
+            a[c] = (a[c] || 0) + 1;
+            return a;
+        }, {});
+    }
+
     findAllRankingByNumbersAndBonusNumber(numbers, bonusNumber) {
         return this.#lottos.map((v) => {
             v.calculateRanking(numbers, bonusNumber);
